@@ -5,6 +5,7 @@ const verify = require("../verifytoken");
 //CREATE
 
 router.post("/", verify, async (req, res) => {
+  // req.user.isAdmin=true;
   if (req.user.isAdmin) {
     const newList = new List(req.body);
     try {

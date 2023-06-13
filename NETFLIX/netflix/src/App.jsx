@@ -10,10 +10,11 @@ import {
   Route,
   Navigate
 } from "react-router-dom";
-
+import  { AuthContext } from "./authContext/AuthContext";
+import { useContext } from "react";
 
 const App=()=> {
-  const user = true;
+  const { user } = useContext(AuthContext);
   return (
     
     <Router>
@@ -21,7 +22,7 @@ const App=()=> {
     <Routes>
     <Route exact path = "/" element = {user ?<Home/> : <Navigate to ="/register" replace/> }>
     </Route>
-    <Route  path = "/movies" element = {<Home type = "movies"/> }>
+    <Route  path = "/movies" element = {<Home type = "movie"/> }>
     </Route>
     <Route  path = "/series" element = {<Home type = "series"/>}>
     </Route>

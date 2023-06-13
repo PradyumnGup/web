@@ -20,7 +20,7 @@ const Home = ({ type }) => {
           {
             headers: {
               token:
-              "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0N2I3MzliZmFjYTllMGI0ZjI5NWU2MyIsImlzQWRtaW4iOmZhbHNlLCJpYXQiOjE2ODYwNzEwNzAsImV4cCI6MTY4NjUwMzA3MH0.EXz4Nv98898tzt5S_7YH17LHsEMvLoXXe5Bl7ELuGT4",
+              "Bearer "+JSON.parse(localStorage.getItem("user")).accessToken,
             },
           }
         );
@@ -35,7 +35,7 @@ const Home = ({ type }) => {
   return (
     <div className="home">
       <Navbar/>
-      <Featured type = {type}/>
+      <Featured type = {type} setGenre = {setGenre}/>
       {/* <List/>
       <List/>
       <List/>
