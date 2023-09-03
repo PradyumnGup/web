@@ -20,7 +20,7 @@ mongoose
   });
  
 app.use(cors({
-  origin:[""],
+  origin:["https://web-rbs8-frontend.vercel.app/register"],
   methods:["POST","GET"],
   credentials: true
 }))
