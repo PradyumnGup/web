@@ -19,7 +19,9 @@ mongoose
     console.error(err);
   });
  
-app(cors());
+app.use(
+  cors()
+);
 app.use(express.json());  
 app.use("/api/auth", authRoute);
 app.use("/api/users", userRoute);
