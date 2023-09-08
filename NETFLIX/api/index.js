@@ -20,9 +20,9 @@ mongoose
   });
  
 app.use(cors({
-  origin:["https://web-rbs8-frontend.vercel.app/register"],
-  methods:["POST","GET"],
-  credentials: true
+  // origin:["https://web-rbs8-frontend.vercel.app/register"],
+  // methods:["POST","GET"],
+  // credentials: true
 }))
 app.use(express.json());  
 app.use("/api/auth", authRoute);
