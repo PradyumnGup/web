@@ -1,0 +1,13 @@
+#movieDetails{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    /* border:2px solid black; */
+    justify-content: space-around;
+    flex:wrap;
+}
+.movie-card{
+    /* background-color: blue; */
+    margin:5vh;
+    /* border:2px solid black; */
+}

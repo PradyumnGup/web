@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style2.css">
+    <title>Movie Details</title>
+</head>
+<body>
+    <div id="movieDetails"></div>
+    
+  <script>
+    // This function is called when the document is fully loaded
+    document.addEventListener('DOMContentLoaded', function() {
+      // Extract movie data from the query parameter
+      const urlParams = new URLSearchParams(window.location.search);
+      const movieDataParam = urlParams.get('movieData');
+
+      if (movieDataParam) {
+        // Decode and parse the JSON data
+        const movieData = JSON.parse(decodeURIComponent(movieDataParam));
+
+        // Do something with the movie data (replace with your rendering logic)
+        renderMovieDetails(movieData);
+      }
+    });
+
+    function renderMovieDetails(movieData) {
+      const movieDetailsContainer = document.getElementById('movieDetails');
+
+      movieData.forEach(movie => {
+        const movieCard = document.createElement('div');
+        movieCard.classList.add('movie-card');
+
+        const title = document.createElement('h2');
+        title.textContent = movie.Title;
+
+        const year = document.createElement('p');
+        year.textContent = `Year: ${movie.Year}`;
+
+        const type = document.createElement('p');
+        type.textContent = `Type: ${movie.Type}`;
+
+        const poster = document.createElement('img');
+        poster.src = movie.Poster;
+        poster.alt = `${movie.Title} Poster`;
+
+        movieCard.appendChild(title);
+        movieCard.appendChild(year);
+        movieCard.appendChild(type);
+        movieCard.appendChild(poster);
+
+        movieDetailsContainer.appendChild(movieCard);
+      });
+    }
+  </script>
+</body>
+</html>
