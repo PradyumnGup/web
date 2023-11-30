@@ -1,1 +1,49 @@
-had
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- added custom style sheet -->
+  <link rel="stylesheet" href="style.css">
+  <!-- added shadow into light google font. -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Shadows+Into+Light&display=swap" rel="stylesheet">
+  <!-- font awesome cdn included to use icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
+  <!--  -->
+  <title>To-do list</title>
+</head>
+
+<body>
+<!-- main section -->
+
+  <main class="app">
+    <!-- heading -->
+    <h1>My Todo List..</h1>
+    <!--  -->
+    <!-- header input class -->
+    <div class="input-header">
+      <!-- date shown -->
+      <h1><span id="date"></span></h1>
+      <!--  -->
+      <!-- input from user taken here -->
+      <div class="to-do-input">
+        <input type="text" id="item" placeholder="Enter a task.."><button id="Enter">Enter</button>
+      </div>
+      <!--  -->
+      
+    </div>
+    <!-- all todolist items go in here from the array -->
+    <div class="to-do-list"></div>
+    <!--  -->
+  </main>
+<!--  -->
+<!-- inclusion of javascript -->
+  <script src="script.js"></script>
+<!--  -->
+</body>
+
+</html>
