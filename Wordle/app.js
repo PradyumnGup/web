@@ -148,7 +148,7 @@ const checkRow = ()=>{
         }
         else{
             if(currrow>=5){
-                const mes = "Oops! Game Over.Answer was "+ toLowerCase(wordle);
+                const mes = "Oops! Game Over.Answer was "+ wordle.toLowerCase();
                 showMessage(mes);
             isGameOver = true;
             return;
