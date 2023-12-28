@@ -165,7 +165,7 @@ const showMessage = (message) => {
     const messageElement = document.createElement('p')
     messageElement.textContent = message
     messageDisplay.append(messageElement)
-    setTimeout(() => messageDisplay.removeChild(messageElement), 2000);
+    setTimeout(() => messageDisplay.removeChild(messageElement), 5000);
 
 }
 const addColorToKey = (keyLetter, color) => {
