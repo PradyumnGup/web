@@ -148,7 +148,8 @@ const checkRow = ()=>{
         }
         else{
             if(currrow>=5){
-                showMessage(`Oops! Game Over.Answer was {wordle}`);
+                const mes = `Oops! Game Over.Answer was {wordle}`;
+                showMessage(mes);
             isGameOver = true;
             return;
             }
