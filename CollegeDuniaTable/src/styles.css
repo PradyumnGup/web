@@ -7,14 +7,17 @@ table {
 .sortByID{
   margin-right: 10px;
   margin-bottom: 10px;
+  cursor: pointer;
 }
 .sortByFees{
   margin-right:10px;
   margin-bottom: 10px;
+  cursor: pointer;
 }
 .sortByUser{
   margin-right: 10px;
   margin-bottom: 10px;
+  cursor: pointer;
 }
 td {
   padding: 1rem;
