@@ -1,9 +1,9 @@
 import React from "react";
 import CollegeItem from "./components/CollegeItem.js";
 import "./styles.css";
-const collegesData = [
+let collegesData = [
   {
-    id: 1,
+    id: 3,
     collegeName: "IIT Madras",
     location: "Chennai,Tamil Nadu | AICTE Approved",
     courseFees: 209550,
@@ -12,7 +12,7 @@ const collegesData = [
     ranking: 3,
   },
   {
-    id: 2,
+    id: 1,
     collegeName: "IIT Madras",
     location: "Chennai",
     courseFees: 209550,
@@ -21,7 +21,7 @@ const collegesData = [
     ranking: 3,
   },
   {
-    id: 3,
+    id: 2,
     collegeName: "IIT Madras",
     location: "Chennai",
     courseFees: 209550,
@@ -93,7 +93,7 @@ const collegesData = [
     ranking: 19,
   },
   {
-    id: 11,
+    id: 12,
     collegeName: "IIT Madras",
     location: "Chennai",
     courseFees: 209550,
@@ -102,7 +102,7 @@ const collegesData = [
     ranking: 15,
   },
   {
-    id: 12,
+    id: 11,
     collegeName: "IIT Madras",
     location: "Chennai",
     courseFees: 209550,
@@ -115,11 +115,26 @@ const collegesData = [
 
 
 
+const sortByID=()=>{
+  
+  collegesData=collegesData.slice().sort((a, b) => a.id - b.id);
+}
+const sortByFees=()=>{
+  
+  collegesData=collegesData.slice().sort((a, b) => a.courseFees - b.courseFees);
 
+}
+const sortByUser=()=>{
+  
+  collegesData=collegesData.slice().sort((a, b) => a.userReviews - b.userReviews);
+}
 
 const App = () => {
   return (
     <div className="App">
+      <button className="sortByID" onClick={sortByID}>SortByCollegeDuniaRank</button>
+      <button className="sortByFees" onClick={sortByFees}>SortByFees</button>
+      <button className="sortByUser" onClick={sortByUser}>SortByUserReviews</button>
       <table>
         <thead>
           <tr>
@@ -141,6 +156,7 @@ const App = () => {
           ))}
         </tbody>
       </table>
+      
     </div>
   );
 };

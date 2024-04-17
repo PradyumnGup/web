@@ -4,7 +4,18 @@ table {
   width: 100%;
 }
 
-
+.sortByID{
+  margin-right: 10px;
+  margin-bottom: 10px;
+}
+.sortByFees{
+  margin-right:10px;
+  margin-bottom: 10px;
+}
+.sortByUser{
+  margin-right: 10px;
+  margin-bottom: 10px;
+}
 td {
   padding: 1rem;
   border: 1px solid #ddd;
