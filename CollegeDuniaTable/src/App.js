@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import CollegeItem from "./components/CollegeItem.js";
 import "./styles.css";
 let collegesData = [
@@ -6,9 +6,9 @@ let collegesData = [
     id: 3,
     collegeName: "IIT Madras",
     location: "Chennai,Tamil Nadu | AICTE Approved",
-    courseFees: 209550,
+    courseFees: 209551,
     placement: 2168000,
-    userReviews: 8.6,
+    userReviews: 9.6,
     ranking: 3,
   },
   {
@@ -115,26 +115,37 @@ let collegesData = [
 
 
 
-const sortByID=()=>{
-  
-  collegesData=collegesData.slice().sort((a, b) => a.id - b.id);
-}
-const sortByFees=()=>{
-  
-  collegesData=collegesData.slice().sort((a, b) => a.courseFees - b.courseFees);
 
-}
-const sortByUser=()=>{
-  
-  collegesData=collegesData.slice().sort((a, b) => a.userReviews - b.userReviews);
-}
 
 const App = () => {
+  const [collegeData,setCollegeData]=useState(collegesData);
+  const [sortBy, setSortBy] = useState(null);
+  const sortData = (sortByParam) => {
+    let sortedData = [...collegesData]; // Create a copy of the array
+
+    if (sortByParam === "id") {
+      sortedData.sort((a, b) => a.id - b.id);
+    } else if (sortByParam === "fees") {
+      sortedData.sort((a, b) => a.courseFees - b.courseFees);
+    } else if (sortByParam === "user") {
+      sortedData.sort((a, b) => a.userReviews - b.userReviews);
+    }
+
+    setCollegeData(sortedData);
+    setSortBy(sortByParam);
+  };
+
+  useEffect(() => {
+    if (sortBy !== null) {
+      sortData(sortBy);
+    }
+  }, [sortBy]);
+
   return (
     <div className="App">
-      <button className="sortByID" onClick={sortByID}>SortByCollegeDuniaRank</button>
-      <button className="sortByFees" onClick={sortByFees}>SortByFees</button>
-      <button className="sortByUser" onClick={sortByUser}>SortByUserReviews</button>
+      <button className="sortByID" onClick={() => sortData("id")}>SortByCollegeDuniaRank</button>
+      <button className="sortByFees" onClick={() => sortData("fees")}>SortByFees</button>
+      <button className="sortByUser" onClick={() => sortData("user")}>SortByUserReviews</button>
       <table>
         <thead>
           <tr>
@@ -151,8 +162,8 @@ const App = () => {
           </tr>
         </thead>
         <tbody>
-          {collegesData.map((college) => (
-            <CollegeItem key={college.id} college={college} />
+          {collegeData.map((coll) => (
+            <CollegeItem key={coll.id} college={coll} />
           ))}
         </tbody>
       </table>
