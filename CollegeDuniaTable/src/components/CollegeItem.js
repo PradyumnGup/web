@@ -69,11 +69,17 @@ const CollegeItem = ({ college }) => {
         </td>
       {/* <td className="cutoff">{cutoff}</td> */}
       {/* <td className="fees">{fees}</td> */}
-      <td className="placement"><span>&#8377;{placement}</span>
+      
+      <td >
+      <div className="placement"><span>&#8377;{placement}</span>
+
       <span>Average Package</span>
       <span>&#8377;60000000</span>
       <span>Highest Package</span>
+      
+      </div>
       </td>
+      
       <td className="user-reviews">{userReviews}/10</td>
       <td className="ranking">{ranking}</td>
       {/* <td className="actions">
