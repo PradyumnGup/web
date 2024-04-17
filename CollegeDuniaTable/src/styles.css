@@ -51,27 +51,30 @@ th {
   align-items: flex-start; /* Align items to the start (left) */
 }
 
+.name{
+  padding: 20px;
+  width: 40%;
+}
 .apply {
   padding: 20px;
-
-  width: 30%;
+  width: 40%;
   
 }
 .location{
   padding :20px;
-  width: 30%;
+  width: 40%;
 
 }
 .btech{
  
     padding :20px;
-    width: 30%;
+    width: 40%;
   
   
 }
 .download {
   padding: 20px;
-  width: 30%;
+  width: 40%;
   
 }
 

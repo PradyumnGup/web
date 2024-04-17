@@ -31,7 +31,7 @@ const CollegeItem = ({ college }) => {
   return (
     <tr className="college-item">
       <td className="id">#{id}</td>
-      <td className="college-name"><span>{collegeName}</span>
+      <td className="college-name"><div className="name">{collegeName}</div>
       <div className="location">
           {location}
         </div>

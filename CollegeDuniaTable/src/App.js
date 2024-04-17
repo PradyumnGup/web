@@ -5,7 +5,7 @@ const collegesData = [
   {
     id: 1,
     collegeName: "IIT Madras",
-    location: "Chennai",
+    location: "Chennai,Tamil Nadu | AICTE Approved",
     courseFees: 209550,
     placement: 2168000,
     userReviews: 8.6,
