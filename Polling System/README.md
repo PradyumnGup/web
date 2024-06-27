@@ -20,12 +20,7 @@ To install all the dependences of the project, run the following command:
     npm start
 
 
-#### Source Code:
- - Link : https://github.com/shakti1590/Polling-api-system
 
-
-#### Deployment Link:
- - Link : https://polling-api-system.vercel.app/
 
 
 
