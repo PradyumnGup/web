@@ -1,44 +1,39 @@
-# PollingAPI
-API for Polling Questions - Coding Ninjas Backend Skill Test Project
+### Polling System API
 
-Task: Need to create an API where anyone can create questions with options and also add votes to it
+A polling system API is an application programming interface that allows developers to create, manage, and retrieve data from a polling system. A polling system is a platform that enables users to create polls, surveys, and quizzes and gather responses from participants.
 
----
+### Problem Statement : 
+ - Let’s make a polling system, only API based.
+ 
+#### Technology Used:
+ - Node Js
+ - Java Script
+ - MongoDB
+ 
 
-## Features
-- Create a question
-- Add options to a question
-- Add a vote to an option of question
-- Delete a question → (optional: A question can’t be deleted if one of it’s options has votes)
-- Delete an option → (optional: An option can’t be deleted if it has even one vote given to it)
-- View a question with it’s options and all the votes given to it
+ ## Install
 
-## Required Routes
-- /questions/create (To create a question)
-- /questions/:id/options/create (To add options to a specific question)
-- /questions/:id/delete (To delete a question)
-- /options/:id/delete (To delete an option)
-- /options/:id/add_vote (To increment the count of votes)
-- /questions/:id (To view a question and it’s options)
+To install all the dependences of the project, run the following command:
 
-## Folder Structure
-```
-CSV_Upload/
-|── |config/
-│   |      ├── mongoose.js
-|   |
-├── routes/
-│   |      ├── api/
-│   ├── index.js
-|   |
-├── controllers/
-│   ├── OptionsController.js
-│   ├── QuestionsController.js
-|   |
-├── models/
-│   ├── options.js
-│   ├── questions.js
-|   |
-├── package-lock.json
-├── package.json
-├── README.md
+    git clone https://github.com/shakti1590/Polling-api-system.git
+    npm install
+    npm start
+
+
+#### Source Code:
+ - Link : https://github.com/shakti1590/Polling-api-system
+
+
+#### Deployment Link:
+ - Link : https://polling-api-system.vercel.app/
+
+
+
+<p align="center">
+  Show some :heart: by starring the repository.
+</p>
+
+
+
+
+

@@ -1,7 +1,12 @@
-const express=require('express')
-const Router=express.Router()
+/**
+ * API routing file
+ */
 
-// this is the entry point of all the api/v1 named url's
-Router.use('/v1',require('./v1/index'));
+const express = require('express');
+const router = express.Router();
 
-module.exports=Router
+// api version 1.0
+router.use('/v1', require('./v1/index'));
+
+
+module.exports = router

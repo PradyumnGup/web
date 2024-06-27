@@ -1,8 +1,12 @@
-const express=require('express')
-const Router=express.Router()
+/**
+ * main routing file
+ */
 
-// this is the entry point of all the api named url's
-console.log("i m in")
-Router.use('/api',require('./api/index'));
+const express = require('express');
+const router = express.Router();
 
-module.exports=Router
+// api routes
+router.use('/api', require('./api/index'));
+
+
+module.exports = router;

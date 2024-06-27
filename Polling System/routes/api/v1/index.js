@@ -1,8 +1,15 @@
-const express=require('express')
-const Router=express.Router()
+/**
+ * API version 1.0 routing file
+ */
 
-// this is the entry point of all the api/v1/questions named url's
-Router.use('/question',require('./questions'));
-Router.use('/options',require('./options'))
+const express = require('express');
+const router = express.Router();
 
-module.exports=Router
+// questions routes
+router.use('/questions', require('./questions'))
+
+
+// options routes
+router.use('/options', require('./options'));
+
+module.exports = router;

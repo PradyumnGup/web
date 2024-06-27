@@ -1,12 +1,14 @@
-
-const express=require('express')
-const Router=express.Router()
-const question_controller=require('../../../controller/QuestionsController')
-
-Router.post('/create',question_controller.create)
-Router.get('/view/:id',question_controller.showDetails)
-Router.delete('/delete/:id',question_controller.deleteQues)
-Router.use('/options',require('./options'))
+const express = require('express');
+const router = express.Router();
 
 
-module.exports=Router
+const questionsController = require('../../../controllers/api/v1/question_controllers');
+const optionsController = require('../../../controllers/api/v1/option_controllers');
+
+router.post('/create', questionsController.create); // create question
+router.delete('/:id/delete', questionsController.delete); // delete question
+router.get('/:id', questionsController.getQuestion); // get question object | details
+
+router.post('/:id/options/create', optionsController.create); // create option
+
+module.exports = router;

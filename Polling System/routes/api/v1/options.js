@@ -1,9 +1,11 @@
-const express=require('express')
-const Router=express.Router()
-const optionsController=require('../../../controller/OptionsController');
+const express = require('express');
+const router = express.Router();
 
-Router.post('/:id/create',optionsController.create);
-Router.get('/:id/add_vote',optionsController.add_vote);
-Router.delete('/delete/:id',optionsController.delete)
+const optionsController = require('../../../controllers/api/v1/option_controllers');
 
-module.exports=Router
+router.delete('/:id/delete', optionsController.delete); // delete option 
+router.get('/:id/add_vote', optionsController.addVote); // add vote to the option
+
+
+
+module.exports = router;

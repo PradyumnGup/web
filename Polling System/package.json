@@ -1,18 +1,23 @@
 {
-  "name": "polling_api_system",
+  "name": "polling-system-api",
   "version": "1.0.0",
-  "description": "skill Test 3 of coding ninjas using postman api's",
+  "description": "coding ninjas backend skill test project",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon index.js"
+    "start": "node index.js",
+    "dev": "nodemon index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "Garima jain",
+  "author": "Akash Padampalle",
   "license": "ISC",
   "dependencies": {
-    "body-parser": "^1.20.1",
+    "cookie-parser": "^1.4.6",
+    "dotenv": "^16.0.3",
     "express": "^4.18.2",
-    "mongoose": "^6.8.0",
-    "nodemon": "^2.0.20"
+    "mongodb": "^5.5.0",
+    "mongoose": "^7.1.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.22"
   }
 }
