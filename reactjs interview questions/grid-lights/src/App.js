@@ -3,7 +3,7 @@ import {useState}from "react";
 
 export default function App() {
     const [order,setOrder]=useState([]);
-    const [isDeactivating,setIsDeactivationg]=useState(false);
+    const [isDeactivating,setIsDeactivating]=useState(false);
     
     const config =[
         [1,1,1],
@@ -11,14 +11,14 @@ export default function App() {
         [1,1,1]
     ];
     const deactivateCells = ()=>{
-        setIsDeactivationg(true);
+        setIsDeactivating(true);
         const timer = setInterval(()=>{
             setOrder((origOrder)=>{
                 const newOrder = origOrder.slice();
                 newOrder.pop();
                 if(newOrder.length === 0){
                     clearInterval(timer);
-                    setIsDeactivationg(false);
+                    setIsDeactivating(false);
                 }
                 return newOrder;
             })
