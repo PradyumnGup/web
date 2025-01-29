@@ -51,6 +51,19 @@ int querySegmentTree(int start, int end, int i, int l, int r, int segmentTree[])
 int RMQ(int st[], int n, int a, int b) {
     return querySegmentTree(a, b, 0, 0, n - 1, st);
 }
-
+void updateSegTree(int index,int val,int i,int l,int r){
+	if(l==r){
+		segmentTree[i]=val;
+		return;
+	}
+	int mid=l+(r-l)/2;
+	if(index<=mid){
+		updateSegTree(index,val,2*i+1,l,mid);
+	}
+	else{
+		updateSegTree(index,val,2*i+2,mid+1,r);
+	}
+	segmentTree[i]=min(sementTree[2*i+1],sementTree[2*i+2]);
+}
 
 
