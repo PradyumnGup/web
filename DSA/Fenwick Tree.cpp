@@ -1,3 +1,5 @@
+
+//Q Block Placement Queries
 class FenwickTree{
     public:
     vector<int>bit;
