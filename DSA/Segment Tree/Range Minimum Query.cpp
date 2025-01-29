@@ -51,6 +51,8 @@ int querySegmentTree(int start, int end, int i, int l, int r, int segmentTree[])
 int RMQ(int st[], int n, int a, int b) {
     return querySegmentTree(a, b, 0, 0, n - 1, st);
 }
+
+//point update in segtree
 void updateSegTree(int index,int val,int i,int l,int r){
 	if(l==r){
 		segmentTree[i]=val;
