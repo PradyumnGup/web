@@ -1,4 +1,3 @@
-
 //Q Block Placement Queries
 class FenwickTree{
     public:
