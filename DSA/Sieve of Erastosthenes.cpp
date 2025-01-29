@@ -8,7 +8,7 @@ public:
         for(int i=2;i<n;i++){
             isPrime[i]=true;
         }
-        //O(Nlog(logN)) ->pime harmonic series
+        //O(Nlog(logN)) ->prime harmonic series
         for(int i=2;i*i<n;i++){
             if(!isPrime[i]){
                 continue;
