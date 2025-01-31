@@ -5,6 +5,7 @@ private:
 
 public:
     vector<int> rank, parent, size;
+    // stack<pair<int, int>> history;
     DisjointSet(int n)
     {
         rank.resize(n + 1, 0);
@@ -48,14 +49,36 @@ public:
         if (ulp_u == ulp_v)
             return;
         if (size[ulp_u]<size[ulp_v]){
+            
+            // history.push({ulp_u, parent[ulp_u]});
+            // history.push({ulp_v, size[ulp_v]});
+            
             parent[ulp_u]=ulp_v;
             size[ulp_v]+=size[ulp_u];
         }
         else{
+            
+            // history.push({ulp_v, parent[ulp_v]});
+            // history.push({ulp_u, size[ulp_u]});
+            
             parent[ulp_v]=ulp_u;
             size[ulp_u]+=size[ulp_v];
         }
         
 
     }
+
+    // void rollback() {
+    //     if (history.empty()) return;  // No operations to undo
+
+    //     // Restore size of the larger component
+    //     auto [node1, originalSize] = history.top();
+    //     history.pop();
+    //     size[node1] = originalSize;
+
+    //     // Restore parent of the smaller component
+    //     auto [node2, originalParent] = history.top();
+    //     history.pop();
+    //     parent[node2] = originalParent;
+    // }
 };
