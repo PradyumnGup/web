@@ -1,3 +1,5 @@
+//TC:-O(N!)
+//SC:- O(N+M)
 class Solution {
 public:
     bool dfs(int node, int start, int N, unordered_map<int, vector<int>>& graph, int& count, vector<int>& vis) {
