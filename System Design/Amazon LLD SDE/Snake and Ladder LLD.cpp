@@ -24,7 +24,7 @@ class Dice{
   public: int rollDice(){
       //do the random number genertion from 1 to 6*noofDice.
       
-      int randomNumber = (std::rand() % (6*dices)) + 1;
+      int randomNumber = (rand() % (6*dices)) + 1;
       return randomNumber;
   }  
 };
@@ -85,7 +85,7 @@ class GameBoard{
                 nextTurn.push(player);
             }
             else if(nextCell==boardSize){
-                cout<<player->getPlayerName() << "Won the Game"<<endl;
+                cout<<player->getPlayerName() << " Won the Game"<<endl;
             }
             else{
                 int nextPosi=nextCell;
@@ -97,7 +97,7 @@ class GameBoard{
                         nextPosi=ladder->getEndPoint();
                     }
                 }
-                if(nextPosi!=nextCell)cout<<player->getPlayerName() << "found ladder and the new position of the player is:" << nextPosi<<endl;
+                if(nextPosi!=nextCell)cout<<player->getPlayerName() << " found ladder and the new position of the player is: " << nextPosi<<endl;
                 
                 //iterate over snakes
                 for(auto snake:snakes){
@@ -106,16 +106,16 @@ class GameBoard{
                         bitten=true;
                     }
                 }
-                if(nextPosi!=nextCell && bitten)cout<<player->getPlayerName() << "was bitten and the new position of the player is:" << nextPosi<<endl;
+                if(nextPosi!=nextCell && bitten)cout<<player->getPlayerName() << " was bitten and the new position of the player is: " << nextPosi<<endl;
                 
                 //update map if nextPosi in bounds
                 if(nextPosi==boardSize){
-                    cout<<player->getPlayerName() << "Won the Game"<<endl;
+                    cout<<player->getPlayerName() << " Won the Game"<<endl;
                 }
                 else{
                     //update
                     playerCurrentPosition[player->getPlayerName()]=nextPosi;
-                    cout<<"Player"<< player->getPlayerName()+"is at position : "<<
+                    cout<<"Player "<< player->getPlayerName()<<" is at position : "<<
                     nextPosi<<endl;
                     nextTurn.push(player);
                 }
