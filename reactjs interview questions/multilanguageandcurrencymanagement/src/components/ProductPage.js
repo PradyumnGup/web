@@ -35,13 +35,16 @@ const ProductPage = () => {
   // Format currency according to locale
   const formatCurrency = useMemo(() => {
     return (price) => {
+      const rate = exchangeRates[currency] || exchangeRates['USD']; // Fallback to USD if missing
+      const convertedPrice = price * rate;
       const locale = language === 'en' ? 'en-US' : 'es-ES';
+
       return new Intl.NumberFormat(locale, {
         style: 'currency',
         currency: currency,
         minimumFractionDigits: 2,
         maximumFractionDigits: 2,
-      }).format(price);
+      }).format(convertedPrice);
     };
   }, [language, currency]);
 
