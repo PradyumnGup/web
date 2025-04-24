@@ -1,0 +1,22 @@
+/* src/styles.css */
+body {
+  transition: background-color 0.3s, color 0.3s;
+}
+
+/* Optional dark mode helpers */
+.dark body {
+  background-color: #1a202c;
+  color: #fff;
+}
+
+/* Utility classes if not using Tailwind */
+.card {
+  background: white;
+  border-radius: 1rem;
+  padding: 1rem;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+.card.dark {
+  background: #2d3748;
+}
