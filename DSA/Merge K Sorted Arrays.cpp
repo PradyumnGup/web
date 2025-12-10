@@ -22,11 +22,13 @@ class Solution
 {
     public:
     //Function to merge k sorted arrays.
-    vector<int> mergeKArrays(vector<vector<int>> arr, int K)
+    vector<int> mergeArrays(vector<vector<int>> arr)
     {
         //code here
         priority_queue<Merge*,vector<Merge*>,compare> minh;
         vector<int> ans;
+        int K=arr.size();
+        int m=arr[0].size();
         //push first element here 1,4,7
         for(int i=0;i<K;i++){
             Merge *temp=new Merge(arr[i][0],i,0);
@@ -40,7 +42,7 @@ class Solution
             int i=temp->row;
             int j=temp->col;
             
-            if(j+1<K){
+            if(j+1<arr[i].size()){
                 Merge *tmp=new Merge(arr[i][j+1],i,j+1);
                 minh.push(tmp);
             }
