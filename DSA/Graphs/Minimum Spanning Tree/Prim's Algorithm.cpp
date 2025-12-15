@@ -26,5 +26,7 @@ class Solution
             }
         }
         return sum;
+		//TC:-(V+E)logV
+		//Sparse graph it is above but for dense graph E~V^2 so it is V^2logV.
     }
 };
