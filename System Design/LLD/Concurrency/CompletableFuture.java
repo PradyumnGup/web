@@ -26,3 +26,8 @@ class Main {
         }
     }
 }
+//Output
+// Main thread is free to do other tasks while waiting...
+// CompletableFuture result: Result from CompletableFuture
+// Processing after CompletableFuture result
+// HI
