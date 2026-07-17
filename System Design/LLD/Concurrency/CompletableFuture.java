@@ -1,0 +1,28 @@
+import java.util.concurrent.CompletableFuture;
+class Main {
+    public static void main(String[] args) {
+        CompletableFuture.supplyAsync(()->{
+            try {
+                Thread.sleep(1000); // Simulate a delay
+            } catch (InterruptedException e) {
+                Thread.currentThread().interrupt();
+            }
+            return "Result from CompletableFuture";
+        })
+        .thenAccept((result)->{
+            System.out.println("CompletableFuture result: " + result);
+            // Additional operation after the result is available.
+            System.out.println("Processing after CompletableFuture result");
+        });
+        // Optionally do other work here while the asynchronous task is running.
+        System.out.println("Main thread is free to do other tasks while waiting...");
+        // To prevent the main thread from exiting immediately,
+        // we'll wait for the CompletableFuture to complete.
+        try {
+            Thread.sleep(2000); // Wait enough time for the async task to finish
+            System.out.println("HI");
+        } catch (InterruptedException e) {
+            Thread.currentThread().interrupt();
+        }
+    }
+}
