@@ -355,7 +355,7 @@ class Cache<K, V> {
             try{
                 if (cacheStorage.containsKey(key)) { 
                     writePolicy.write(key, value, cacheStorage, dbStorage);
-                    evictionAlgorithm.evictKey();
+                    evictionAlgorithm.keyAccessed(key); 
                 }
                 else{
 
