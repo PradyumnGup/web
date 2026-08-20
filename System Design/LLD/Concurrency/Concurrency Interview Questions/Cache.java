@@ -138,89 +138,87 @@ interface EvictionAlgorithm<K> {
     K evictKey() throws Exception; 
 }
 
-class DoublyLinkedListNode<K> { 
-    private final K value; 
-    DoublyLinkedListNode<K> prev; 
-    DoublyLinkedListNode<K> next; 
-  
-    public DoublyLinkedListNode(K value) { 
-        this.value = value; 
-        this.prev = null; 
-        this.next = null; 
-    } 
- 
- 
-    public K getValue() { 
-        return value; 
-    } 
+class DoublyLinkedListNode<K> {
+
+    private final K value;
+
+    DoublyLinkedListNode<K> next;
+    DoublyLinkedListNode<K> prev;
+
+    public DoublyLinkedListNode(K value) {
+        this.value = value;
+        this.next = null;
+        this.prev = null;
+    }
+
+    public K getValue() {
+        return value;
+    }
 }
 
-class DoublyLinkedList<K> { 
-    private DoublyLinkedListNode<K> head; 
-    private DoublyLinkedListNode<K> tail; 
-  
-    public DoublyLinkedList() { 
-        this.head = null; 
-        this.tail = null; 
-    } 
-  
-    /** 
-     - Adds a node to the tail of the list. 
-     */ 
-    public void addNodeAtTail(DoublyLinkedListNode<K> node) { 
-        if (tail == null) { 
-            head = node; 
-            tail = node; 
-        } else { 
-            tail.next = node; 
-            node.prev = tail; 
-            tail = node; 
-        } 
-        node.next = null; 
-    } 
-  
-    /** 
-     - Detaches a node from the list. 
-     */ 
-    public void detachNode(DoublyLinkedListNode<K> node) { 
-        if (node == null) return; 
-        if (node.prev != null) { 
-            node.prev.next = node.next; 
-        } else { 
-            // Node is head. 
-            head = node.next; 
-        } 
-        if (node.next != null) { 
-            node.next.prev = node.prev; 
-        } else { 
-            // Node is tail. 
-            tail = node.prev; 
-        } 
-        node.prev = null; 
-        node.next = null; 
-    } 
-  
-    /** 
-     - Returns the head node (the least recently used). 
-     */ 
-    public DoublyLinkedListNode<K> getHead() { 
-        return head; 
-    } 
-  
-    /** 
-     - Removes the head node from the list. 
-     */ 
-    public void removeHead() { 
-        if (head != null) { 
-            if (head.next != null) { 
-                head = head.next; 
-                head.prev = null; 
-            } else { 
-                head = null; 
-                tail = null; 
-            } 
-        } 
-    } 
+class DoublyLinkedList<K> {
+
+    /*
+     * Same concept as your C++ code:
+     *
+     * head = MRU
+     * tail = LRU
+     *
+     * head <-> C <-> B <-> A <-> tail
+     */
+
+    private final DoublyLinkedListNode<K> head;
+    private final DoublyLinkedListNode<K> tail;
+
+    public DoublyLinkedList() {
+
+        head = new DoublyLinkedListNode<>(null);
+        tail = new DoublyLinkedListNode<>(null);
+
+        head.next = tail;
+        tail.prev = head;
+    }
+
+    /*
+     * Same as your C++ insertAfterHead()
+     */
+    public void insertAfterHead(DoublyLinkedListNode<K> node) {
+
+        DoublyLinkedListNode<K> headNext = head.next;
+
+        head.next = node;
+
+        node.prev = head;
+        node.next = headNext;
+
+        headNext.prev = node;
+    }
+
+     /*
+     * Same as your C++ deleteNodeBeforeTail()
+     */
+    public void deleteNode(DoublyLinkedListNode<K> node) {
+
+        DoublyLinkedListNode<K> prevNode = node.prev;
+        DoublyLinkedListNode<K> nextNode = node.next;
+
+        prevNode.next = nextNode;
+        nextNode.prev = prevNode;
+
+        node.prev = null;
+        node.next = null;
+    }
+
+    /*
+     * Same as:
+     *
+     * tail->prev
+     *
+     * in your C++ implementation.
+     */
+    public DoublyLinkedListNode<K> getLRUNode() {
+        return tail.prev == head ? null : tail.prev;
+    }
 }
 
 class LRUEvictionAlgorithm<K> implements EvictionAlgorithm<K> { 
@@ -237,27 +235,48 @@ class LRUEvictionAlgorithm<K> implements EvictionAlgorithm<K> {
     @Override 
     public synchronized void keyAccessed(K key) throws Exception { 
         if (keyToNodeMap.containsKey(key)) { 
-            // Move the node to the tail (most recently used). 
+           /*
+             * Existing key.
+             *
+             * Same as:
+             *
+             * Node* node = mp[key];
+             * deleteNodeBeforeTail(node);
+             * insertAfterHead(node);
+             */
             DoublyLinkedListNode<K> node = keyToNodeMap.get(key); 
-            dll.detachNode(node); 
-            dll.addNodeAtTail(node); 
+            dll.deleteNode(node);
+
+            dll.insertAfterHead(node); 
         } else { 
-            // New key: add it to the tail. 
-            DoublyLinkedListNode<K> newNode = new DoublyLinkedListNode<>(key); 
-            dll.addNodeAtTail(newNode); 
-            keyToNodeMap.put(key, newNode); 
+            /*
+             * New key.
+             *
+             * Same as:
+             *
+             * Node* newNode = new Node(key,value);
+             * mp[key] = newNode;
+             * insertAfterHead(newNode);
+             */
+            DoublyLinkedListNode<K> newNode =
+                    new DoublyLinkedListNode<>(key);
+
+            keyToNodeMap.put(key, newNode);
+
+            dll.insertAfterHead(newNode);
         } 
     } 
   
     @Override 
     public synchronized K evictKey() throws Exception { 
         // Evict the least recently used key (from the head). 
-        DoublyLinkedListNode<K> nodeToEvict = dll.getHead(); 
+         DoublyLinkedListNode<K> nodeToEvict =
+                dll.getLRUNode(); 
         if (nodeToEvict == null) { 
             return null; 
         } 
         K evictKey = nodeToEvict.getValue(); 
-        dll.removeHead(); 
+        dll.deleteNode(nodeToEvict); 
         keyToNodeMap.remove(evictKey); 
         return evictKey; 
     } 
@@ -355,7 +374,7 @@ class Cache<K, V> {
             try{
                 if (cacheStorage.containsKey(key)) { 
                     writePolicy.write(key, value, cacheStorage, dbStorage);
-                    evictionAlgorithm.keyAccessed(key); 
+                    evictionAlgorithm.keyAccessed(key);
                 }
                 else{
 
@@ -450,9 +469,3 @@ class Main {
         }
     }
 }
-
-//A is evicted or not found in cache.
-// F: Fig
-// B: Blueberry
-
-// === Code Execution Successful ===
