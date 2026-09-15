@@ -329,3 +329,17 @@ class Main {
         
     }
 }
+
+// O/P:-
+    
+// Generated Playlist:
+// Rock Song 1 - Artist A [Rock, English]
+// Pop Song 1 - Artist B [Pop, English]
+// Hindi Pop - Artist D [Pop, Hindi]
+// Rock Song 2 - Artist E [Rock, English]
+// Recommended Rock - Artist F [Rock, English]
+// Recommended Pop - Artist G [Pop, Hindi]
+// Recommended Rock 2 - Artist I [Rock, English]
+// Recommended Pop 2 - Artist J [Pop, English]
+
+// === Code Execution Successful ===
