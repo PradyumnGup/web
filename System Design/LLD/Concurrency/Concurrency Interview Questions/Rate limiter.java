@@ -588,3 +588,35 @@ class Main {
         );
     }
 }
+
+//O/p
+//========== TOKEN BUCKET TEST ==========
+// Request 1 -> RateLimitResult@74a14482
+// Request 2 -> RateLimitResult@6ff3c5b5
+// Request 3 -> RateLimitResult@3764951d
+// Request 4 -> RateLimitResult@4b1210ee
+// Request 5 -> RateLimitResult@4d7e1886
+
+// Waiting 1 second...
+// After 1 second -> RateLimitResult@7440e464
+
+// ========== DIFFERENT CLIENT ==========
+// user2 -> RateLimitResult@78308db1
+
+// ========== SLIDING WINDOW TEST ==========
+// Upload request 1 -> RateLimitResult@5a07e868
+// Upload request 2 -> RateLimitResult@76ed5528
+// Upload request 3 -> RateLimitResult@2c7b84de
+
+// ========== DEFAULT LIMITER TEST ==========
+// Unknown endpoint request 1 -> RateLimitResult@3fee733d
+// Unknown endpoint request 2 -> RateLimitResult@5acf9800
+// Unknown endpoint request 3 -> RateLimitResult@4617c264
+
+// ========== CONCURRENCY TEST ==========
+// Thread-4 -> RateLimitResult@5f114d1f
+// Thread-1 -> RateLimitResult@13203f67
+// Thread-2 -> RateLimitResult@4c0f1656
+// Thread-3 -> RateLimitResult@48766bb
+
+// ========== DONE ==========
